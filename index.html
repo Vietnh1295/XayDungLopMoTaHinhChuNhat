@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+Chiều rộng <input type="number" id="width">
+chiều cao <input type="number" id="height">
+<input type="button" onclick="Rectangle();" value="Rectangle">
+<p id="result"></p>
+<canvas id="myCanvas" width="2000" height="1000"></canvas>
+<script>
+    var  width=document.getElementById('width');
+    var  height=document.getElementById('height');
+    let HinhChuNhat=function (width,height) {
+        this.width=width;
+        this.height=height;
+        this.setwidth=function (width) {
+            this.width=width;
+        }
+        this.setheight=function(height)
+        {
+            this.height=height;
+        }
+        this.ChuVi=function () {
+            return ((this.width+this.height)*2);
+        }
+        this.DienTich=function () {
+            return(this.width*this.height);
+        }
+    }
+    function Rectangle ()
+    {
+        var Rectangle= new HinhChuNhat(parseInt(width.value),parseInt(height.value))
+        var c = document.getElementById("myCanvas");
+        var ctx = c.getContext("2d");
+        ctx.fillStyle = "#ff1516";
+        ctx.fillRect(0, 0, width.value, height.value);
+        document.getElementById('result').innerText='Diện tích hình chữ nhật là='+Rectangle.DienTich()+' '+'Chu vi hình chữ nhật là='+Rectangle.ChuVi();
+    }
+</script>
+</body>
+</html>
